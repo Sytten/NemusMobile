@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function SettingsScreen() {
   return (
@@ -21,8 +21,8 @@ export default function SettingsScreen() {
 
 SettingsScreen.navigationOptions = {
   header: null,
-  drawerLabel: "Settings",
+  drawerLabel: "Payment",
   drawerIcon: ({ tintColor }) => (
-    <AntDesign name="setting" size={24} color={tintColor} />
+    <MaterialIcons name="payment" size={24} color={tintColor} />
   )
 };

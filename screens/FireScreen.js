@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-
+import { View, Text, ScrollView, Image } from "react-native";
+import { SimpleLineIcons } from "@expo/vector-icons";
 export default function SettingsScreen() {
   return (
     <View style={{ flex: 1 }}>
@@ -21,8 +20,8 @@ export default function SettingsScreen() {
 
 SettingsScreen.navigationOptions = {
   header: null,
-  drawerLabel: "Settings",
+  drawerLabel: "Current fire danger",
   drawerIcon: ({ tintColor }) => (
-    <AntDesign name="setting" size={24} color={tintColor} />
+    <SimpleLineIcons name="fire" size={24} color={tintColor} />
   )
 };

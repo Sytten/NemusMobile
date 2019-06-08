@@ -1,63 +1,28 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import {
-  createStackNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
+import { createDrawerNavigator } from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import FireScreen from "../screens/FireScreen";
+import MainMap from "../screens/MainMap";
+import SearchScreen from "../screens/SearchScreen";
+import TripScreen from "../screens/TripScreen";
+import ParkScreen from "../screens/ParkScreen";
+import PaymentScreen from "../screens/PaymentScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import DonateScreen from "../screens/DonateScreen";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+import contentComponent from "../components/CustomDrawerContentComponent";
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
+const MyDrawerNavigator = createDrawerNavigator(
+  {
+    FireScreen,
+    MainMap,
+    SearchScreen,
+    TripScreen,
+    ParkScreen,
+    PaymentScreen,
+    DonateScreen,
+    SettingsScreen
+  },
+  { contentComponent, initialRouteName: "MainMap" }
+);
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Auth',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Search: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Search',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
-};
-
-export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-});
+export default MyDrawerNavigator;

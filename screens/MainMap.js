@@ -1,12 +1,15 @@
-import * as WebBrowser from "expo-web-browser";
 import MapView from "react-native-maps";
 import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { FontAwesome, Feather } from "@expo/vector-icons";
+import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function HomeScreen(props) {
   toSearch = () => {
-    props.navigation.navigate("Search");
+    props.navigation.navigate("SearchScreen");
+  };
+  openSidebar = () => {
+    props.navigation.openDrawer();
   };
   return (
     <View style={styles.container}>
@@ -19,6 +22,34 @@ export default function HomeScreen(props) {
         followsUserLocation={true}
         showsCompass={true}
       />
+      <View
+        style={{
+          position: "absolute",
+          top: 20,
+          width: "100%",
+          alignItems: "center",
+          // backgroundColor: "green",
+          justifyContent: "center"
+        }}
+      >
+        <View
+          style={{
+            width: "95%",
+            height: 50,
+            backgroundColor: "white",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around"
+          }}
+        >
+          <TouchableOpacity onPress={openSidebar}>
+            <FontAwesome name="navicon" size={28} color="grey" />
+          </TouchableOpacity>
+          <Text style={{ fontSize: 30, color: "grey" }}>
+            Welcome to Yosemite!
+          </Text>
+        </View>
+      </View>
       <TouchableOpacity style={{ height: 40 }} onPress={toSearch}>
         <Text style={{ fontSize: 30, color: "blue", textAlign: "center" }}>
           Not there?
@@ -29,7 +60,11 @@ export default function HomeScreen(props) {
 }
 
 HomeScreen.navigationOptions = {
-  header: null
+  header: null,
+  drawerLabel: "Main Map",
+  drawerIcon: ({ tintColor }) => (
+    <Feather name="map" size={24} color={tintColor} />
+  )
 };
 
 const styles = StyleSheet.create({
@@ -118,5 +153,9 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
+  },
+  icon: {
+    width: 24,
+    height: 24
   }
 });
