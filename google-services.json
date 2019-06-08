@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "610529020430",
+    "firebase_url": "https://nemus-243119.firebaseio.com",
+    "project_id": "nemus-243119",
+    "storage_bucket": "nemus-243119.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610529020430:android:b65c69645f16d1dd",
+        "android_client_info": {
+          "package_name": "com.nemus.nemus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610529020430-vkv45o3qn8kqhkf5ag4lue94dffc3f2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo5XmcBSez5K20yeDWxfwp9O-2GfDAeEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610529020430-vkv45o3qn8kqhkf5ag4lue94dffc3f2r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610529020430-4n98ctu9p3h3ki82ldj9gjnnq7n3e1b4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nemus.nemus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
