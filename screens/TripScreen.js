@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -25,33 +25,49 @@ import {
 import moment from "moment";
 
 export default function TripScreen(props) {
-  let data = {
+  const [data, setData] = useState({
+    "id": 1,
+    "startDate": "2019-05-04T17:00:00.000Z",
+    "endDate": "2019-08-06T17:00:00.000Z",
+    "numberPeople": 2,
+    "licensePlate": null,
+    "pass": {
         "id": 1,
-        "startDate": "2019-05-04T17:00:00.000Z",
-        "endDate": "2019-08-06T17:00:00.000Z",
-        "numberPeople": 2,
-        "licensePlate": null,
-        "pass": {
-            "id": 1,
-            "type": "CAMPING",
-            "maxDays": 10,
-            "maxPeople": 4,
-            "fee": 20,
-            "park": {
-              "id": 1,
-              "name": "Pinnacles State Park",
-              "latitude": 36.486944,
-              "longitude": -121.166944,
-              "imageTag": "192fa5f6-d7be-45fa-83df-03d775dec680",
-              "dangerLevel": "LOW",
-              "rating": 4,
-              "address": "2400 Pinnacles Hwy, Paicines, CA 95043",
-              "website": "visitpinnacles.com",
-              "number": "(831) 389-4538",
-              "description": "The remains of an ancient volcanic field, this park features geologic sights, caves & condors."
+        "type": "CAMPING",
+        "maxDays": 10,
+        "maxPeople": 4,
+        "fee": 20,
+        "park": {
+          "id": 1,
+          "name": "Pinnacles State Park",
+          "latitude": 36.486944,
+          "longitude": -121.166944,
+          "imageTag": "192fa5f6-d7be-45fa-83df-03d775dec680",
+          "dangerLevel": "LOW",
+          "rating": 4,
+          "address": "2400 Pinnacles Hwy, Paicines, CA 95043",
+          "website": "visitpinnacles.com",
+          "number": "(831) 389-4538",
+          "description": "The remains of an ancient volcanic field, this park features geologic sights, caves & condors."
+      }
+    }
+  });
+  useEffect(() => {
+    fetch("http://api.nemus.world/users/1/trips")
+      .then(response => response.json())
+      .then(json => {
+        let current = { id: 0 }
+        for (const t of json) {
+          if (t.id > current.id) {
+            current = t;
           }
         }
-      };
+        setData(current);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
   return (
     <ScrollView style={{ flex: 1 }}>
       <Text
