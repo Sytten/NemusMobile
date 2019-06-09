@@ -12,6 +12,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import AppNavigator from "./navigation/AppNavigator";
+import { registerPhone } from "./notifications";
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -46,6 +47,7 @@ export default function App(props) {
 
 async function loadResourcesAsync() {
   await Promise.all([
+    registerPhone(),
     Asset.loadAsync([
       require("./assets/images/robot-dev.png"),
       require("./assets/images/robot-prod.png")
