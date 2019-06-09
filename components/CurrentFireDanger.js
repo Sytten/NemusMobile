@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 export default props => {
+  const color = props.color === "GREEN" ? "green" : "red";
   return (
     <View
       style={{
@@ -17,7 +18,7 @@ export default props => {
       <MaterialCommunityIcons
         name="checkbox-blank-circle"
         size={24}
-        color="green"
+        color={color}
       />
     </View>
   );

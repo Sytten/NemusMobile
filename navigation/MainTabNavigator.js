@@ -1,5 +1,5 @@
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
-
+import { Platform } from "react-native";
 import FireScreen from "../screens/FireScreen";
 import MainMap from "../screens/MainMap";
 import TripScreen from "../screens/TripScreen";
@@ -24,7 +24,10 @@ const MyDrawerNavigator = createDrawerNavigator(
     DonateScreen,
     SettingsScreen
   },
-  { contentComponent, initialRouteName: "MainMap" }
+  {
+    contentComponent,
+    initialRouteName: "MainMap"
+  }
 );
 const Root = createStackNavigator(
   {
@@ -34,6 +37,15 @@ const Root = createStackNavigator(
     DonationConfirm,
     PassOptionsScreen
   },
-  { headerMode: "none", initialRouteName: "MyDrawerNavigator" }
+  {
+    headerMode: "none",
+    initialRouteName: "MyDrawerNavigator",
+    headerTitleStyle: {
+      ...Platform.select({
+        ios: { fontFamily: "Arial" },
+        android: { fontFamily: "Roboto" }
+      })
+    }
+  }
 );
 export default Root;

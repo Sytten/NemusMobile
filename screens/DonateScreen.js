@@ -22,8 +22,9 @@ export default function SettingsScreen(props) {
         <TouchableOpacity
           onPress={donate}
           style={{
-            width: 200,
-            height: 80,
+            width: 300,
+            height: 50,
+            justifyContent: "center",
             backgroundColor: "grey",
             margin: 10,
             alignItems: "center"
@@ -34,8 +35,9 @@ export default function SettingsScreen(props) {
         <TouchableOpacity
           onPress={donate}
           style={{
-            width: 200,
-            height: 80,
+            width: 300,
+            height: 50,
+            justifyContent: "center",
             backgroundColor: "grey",
             margin: 10,
             alignItems: "center"
@@ -46,8 +48,9 @@ export default function SettingsScreen(props) {
         <TouchableOpacity
           onPress={donate}
           style={{
-            width: 200,
-            height: 80,
+            width: 300,
+            height: 50,
+            justifyContent: "center",
             backgroundColor: "grey",
             margin: 10,
             alignItems: "center"
@@ -58,8 +61,9 @@ export default function SettingsScreen(props) {
         <TouchableOpacity
           onPress={donate}
           style={{
-            width: 200,
-            height: 80,
+            width: 300,
+            height: 50,
+            justifyContent: "center",
             backgroundColor: "grey",
             margin: 10,
             alignItems: "center"

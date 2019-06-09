@@ -33,11 +33,18 @@ export default function SettingsScreen(props) {
       </View>
       <TouchableOpacity
         onPress={toMain}
-        style={{ width: 300, height: 50, backgroundColor: "grey" }}
+        style={{
+          width: 200,
+          height: 80,
+          backgroundColor: "grey",
+          alignSelf: "center",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
       >
         <Text style={{ fontSize: 30 }}>Confirm</Text>
       </TouchableOpacity>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 3 }}>
         <Image
           source={require("../assets/images/wilderness.jpeg")}
           style={{ width: 300, height: 300 }}

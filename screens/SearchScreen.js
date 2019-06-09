@@ -24,7 +24,7 @@ export default function SettingsScreen(props) {
     <View style={{ flex: 1 }}>
       <View
         style={{
-          height: 50,
+          height: 75,
           backgroundColor: "grey",
           alignItems: "center",
           justifyContent: "space-between",

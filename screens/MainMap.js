@@ -90,12 +90,9 @@ export default class HomeScreen extends React.Component {
                 coordinate={item}
                 centerOffset={{ x: -18, y: -60 }}
                 anchor={{ x: 0.69, y: 1 }}
-                image={markerImg}
                 title={item.name}
                 description={item.name}
-              >
-                <Text style={styles.marker}>X</Text>
-              </Marker>
+              />
             );
           })}
         </MapView>

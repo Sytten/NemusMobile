@@ -8,15 +8,26 @@ export default function SettingsScreen() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  signup = () => {
-    
-  }
+  signup = () => {};
   return (
-    <View style={{ flex: 1, alignItems: "stretch" }}>
-      <TextInput value={firstName} onChangeText={t => setFirstName(t)} />
-      <TextInput value={lastName} onChangeText={t => setLastName(t)} />
-      <TextInput value={email} onChangeText={t => setEmail(t)} />
+    <View style={{ flex: 1, alignItems: "stretch", padding: 20 }}>
       <TextInput
+        style={{ flex: 1 }}
+        value={firstName}
+        onChangeText={t => setFirstName(t)}
+      />
+      <TextInput
+        style={{ flex: 1 }}
+        value={lastName}
+        onChangeText={t => setLastName(t)}
+      />
+      <TextInput
+        style={{ flex: 1 }}
+        value={email}
+        onChangeText={t => setEmail(t)}
+      />
+      <TextInput
+        style={{ flex: 1 }}
         value={password}
         onChangeText={t => setPassword(t)}
         secureTextEntry={true}
