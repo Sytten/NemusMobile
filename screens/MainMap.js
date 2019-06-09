@@ -55,9 +55,9 @@ export default class HomeScreen extends React.Component {
     this.getParks();
   }
 
-  toSearch() {
-    this.props.navigation.navigate("Search");
-  }
+  toSearch = () => {
+    this.props.navigation.navigate("SearchScreen");
+  };
 
   openSidebar = () => {
     this.props.navigation.openDrawer();
@@ -75,7 +75,7 @@ export default class HomeScreen extends React.Component {
           followsUserLocation={true}
           showsCompass={true}
           onCalloutPress={() => {
-            console.log("calloutPress");
+            this.props.navigation.navigate("DetailScreen");
           }}
         >
           {this.state.coordinates.map(function(item, i) {
