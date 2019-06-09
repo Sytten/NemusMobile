@@ -10,6 +10,7 @@ import DonateScreen from "../screens/DonateScreen";
 
 import SearchScreen from "../screens/SearchScreen";
 import DetailScreen from "../screens/DetailScreen";
+import DonationConfirm from "../screens/DonationConfirm";
 
 import contentComponent from "../components/CustomDrawerContentComponent";
 const MyDrawerNavigator = createDrawerNavigator(
@@ -25,7 +26,7 @@ const MyDrawerNavigator = createDrawerNavigator(
   { contentComponent, initialRouteName: "MainMap" }
 );
 const Root = createStackNavigator(
-  { MyDrawerNavigator, SearchScreen, DetailScreen },
+  { MyDrawerNavigator, SearchScreen, DetailScreen, DonationConfirm },
   { headerMode: "none", initialRouteName: "MyDrawerNavigator" }
 );
 export default Root;

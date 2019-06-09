@@ -9,7 +9,7 @@ import {
 } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import markerImg from "../assets/images/marker.png";
-
+import CurrentFireDanger from "../components/CurrentFireDanger";
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const LATITUDE = 37.78825;
@@ -132,23 +132,7 @@ export default class HomeScreen extends React.Component {
             Not there?
           </Text>
         </TouchableOpacity>
-        <View
-          style={{
-            height: 50,
-            flexDirection: "row",
-            justifyContent: "space-around",
-            backgroundColor: "#E8F3ED",
-            alignItems: "center"
-          }}
-        >
-          <SimpleLineIcons name="fire" size={24} color="black" />
-          <Text>Current fire danger</Text>
-          <MaterialCommunityIcons
-            name="checkbox-blank-circle"
-            size={24}
-            color="green"
-          />
-        </View>
+        <CurrentFireDanger />
       </View>
     );
   }

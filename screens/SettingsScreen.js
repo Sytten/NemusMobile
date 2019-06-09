@@ -1,20 +1,29 @@
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function SettingsScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  signup = () => {
+    
+  }
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ height: 50, backgroundColor: "grey" }}>
-        <Text style={{ color: "white", fontSize: 30 }}>Search Parks</Text>
-      </View>
-      <ScrollView style={{ flex: 1 }}>
-        {[1, 2, 3, 4, 5].map(v => (
-          <View key={v}>
-            <Text>{v}</Text>
-          </View>
-        ))}
-      </ScrollView>
+    <View style={{ flex: 1, alignItems: "stretch" }}>
+      <TextInput value={firstName} onChangeText={t => setFirstName(t)} />
+      <TextInput value={lastName} onChangeText={t => setLastName(t)} />
+      <TextInput value={email} onChangeText={t => setEmail(t)} />
+      <TextInput
+        value={password}
+        onChangeText={t => setPassword(t)}
+        secureTextEntry={true}
+      />
+      <TouchableOpacity onPress={signup}>
+        <Text>Sign up</Text>
+      </TouchableOpacity>
     </View>
   );
 }

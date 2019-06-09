@@ -1,15 +1,48 @@
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
 
-export default function SettingsScreen() {
+export default function SettingsScreen(props) {
+  const [password, setPassword] = useState("");
+  toMain = () => {
+    props.navigation.navigate("MainMap");
+  };
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
-      <Text>Confirm donation</Text>
-      <View style={{ flexDirection: "row" }}>
-        <Text>Total</Text>
-        <Text>$10</Text>
+    <View style={{ flex: 1, padding: 20 }}>
+      <Text style={{ fontSize: 30, flex: 1 }}>Confirm donation</Text>
+      <View style={{ flexDirection: "row", flex: 1 }}>
+        <Text style={{ fontSize: 30 }}>Total</Text>
+        <Text style={{ fontSize: 30 }}>
+          ${props.navigation.getParam("amount", 10)}
+        </Text>
+      </View>
+      <View style={{ flexDirection: "row", flex: 1, alignItems: "center" }}>
+        <Image
+          source={require("../assets/images/security.png")}
+          style={{ width: 30, height: 30 }}
+          resizeMode="contain"
+        />
+        <TextInput
+          value={password}
+          onChangeText={t => setPassword(t)}
+          placeholder="Enter Password"
+          secureTextEntry={true}
+          style={{ fontSize: 30 }}
+        />
+      </View>
+      <TouchableOpacity
+        onPress={toMain}
+        style={{ width: 300, height: 50, backgroundColor: "grey" }}
+      >
+        <Text style={{ fontSize: 30 }}>Confirm</Text>
+      </TouchableOpacity>
+      <View style={{ flex: 1 }}>
+        <Image
+          source={require("../assets/images/wilderness.jpeg")}
+          style={{ width: 300, height: 300 }}
+          resizeMode="contain"
+        />
       </View>
     </View>
   );
