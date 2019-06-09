@@ -30,16 +30,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coordinates: [
-        {
-          latitude: 37.78825,
-          longitude: -122.4324
-        },
-        {
-          latitude: 47.78825,
-          longitude: -122.4324
-        }
-      ]
+      coordinates: []
     };
   }
 
@@ -69,6 +60,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <MapView
@@ -79,9 +71,6 @@ export default class HomeScreen extends React.Component {
           showsMyLocationButton={true}
           followsUserLocation={true}
           showsCompass={true}
-          onCalloutPress={() => {
-            this.props.navigation.navigate("DetailScreen");
-          }}
         >
           {this.state.coordinates.map(function(item, i) {
             return (
@@ -91,7 +80,9 @@ export default class HomeScreen extends React.Component {
                 centerOffset={{ x: -18, y: -60 }}
                 anchor={{ x: 0.69, y: 1 }}
                 title={item.name}
-                description={item.name}
+                onCalloutPress={() => {
+                  navigation.navigate("DetailScreen", item);
+                }}
               />
             );
           })}

@@ -21,6 +21,12 @@ import {
 } from "@expo/vector-icons";
 
 export default function DetailScreen(props) {
+  let data = props.navigation.state.params;
+  let stars = []
+  for (var i = 0; i < data.rating; i++) {
+    stars.push(<Ionicons key={i} name="ios-star" size={24} color={"gold"} style={{marginRight:5}}/>)
+  }
+  console.log(data);
   return (
     <ScrollView style={styles.container}>
       <View style={{ flex: 1, flexDirection: "column" }}>
@@ -28,7 +34,7 @@ export default function DetailScreen(props) {
           style={{ width: width, height: 160 }}
           source={{
             uri:
-              "https://storage.googleapis.com/nemus-parks-images/192fa5f6-d7be-45fa-83df-03d775dec680"
+              `https://storage.googleapis.com/nemus-parks-images/${data.imageTag}`
           }}
         />
 
@@ -40,16 +46,13 @@ export default function DetailScreen(props) {
             marginBottom: 5
           }}
         >
-          Pfeiffer Big Sur State Park
+          {data.name}
         </Text>
 
         <View
           style={{ flex: 1, flexDirection: "row", marginBottom: 5, padding: 5 }}
         >
-          <Ionicons name="ios-star" size={24} color={"gold"} />
-          <Ionicons name="ios-star" size={24} color={"gold"} />
-          <Ionicons name="ios-star" size={24} color={"gold"} />
-          <Ionicons name="ios-star" size={24} color={"gold"} />
+          {stars}
         </View>
 
         <View style={{ flex: 1, flexDirection: "column", marginBottom: 5 }}>
@@ -60,22 +63,22 @@ export default function DetailScreen(props) {
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 18 }}>
-              Pfeiffer Big Sur Rd, Big Sur, CA 93920
+            <Text style={{ fontSize: 16 }}>
+              {data.address}
             </Text>
           </View>
 
-          <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
+          {/*<View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
             <Entypo
               name="address"
               size={24}
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 18 }}>
+            <Text style={{ fontSize: 16 }}>
               66VF+48 Loma Vista, Big Sur, CA
             </Text>
-          </View>
+          </View>*/}
 
           <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
             <MaterialCommunityIcons
@@ -84,7 +87,7 @@ export default function DetailScreen(props) {
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 18 }}>parks.ca.gov</Text>
+            <Text style={{ fontSize: 16 }}>{data.website}</Text>
           </View>
 
           <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
@@ -94,12 +97,11 @@ export default function DetailScreen(props) {
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 18 }}>(831) 667-2315</Text>
+            <Text style={{ fontSize: 16 }}>{data.number}</Text>
           </View>
 
           <Text style={{ marginBottom: 10, padding: 5, marginTop: 10 }}>
-            1,000-acre state park boasts a wide variety of hiking trails,
-            wildlife, campgrounds & a guest lodge.
+            {data.description}
           </Text>
           <CurrentFireDanger />
           <View
