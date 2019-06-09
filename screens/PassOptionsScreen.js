@@ -36,6 +36,7 @@ export default function PassOptionsScreen(props) {
     props.navigation.navigate("MainMap");
   };
   const pass = props.navigation.getParam("pass");
+  const data = props.navigation.getParam("data");
   const { id } = pass;
   const [noPeople, setNoPeople] = useState(1);
   const [licensePlate, setLicense] = useState("CP000011");
@@ -44,14 +45,14 @@ export default function PassOptionsScreen(props) {
   return (
     <View style={{ flex: 1, alignSelf: "center", padding: 20 }}>
       <Text style={{ fontSize: 32, fontWeight: "bold", flex: 1 }}>
-        Pfeiffer Big Sur State Park
+        {data.name}
       </Text>
       <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
         <FontAwesome
           name="group"
           size={30}
           color={"#0056FF"}
-          style={{ width: 36, textAlign: "center" }}
+          style={{ width: 50, textAlign: "center" }}
         />
         <NumericInput
           type="up-down"
@@ -64,7 +65,7 @@ export default function PassOptionsScreen(props) {
           name="calendar"
           size={30}
           color={"#0056FF"}
-          style={{ width: 36, textAlign: "center" }}
+          style={{ width: 50, textAlign: "center" }}
         />
         <DatePicker
           style={{ width: 200 }}
@@ -85,7 +86,7 @@ export default function PassOptionsScreen(props) {
           name="calendar"
           size={30}
           color={"#0056FF"}
-          style={{ width: 36, textAlign: "center" }}
+          style={{ width: 50, textAlign: "center" }}
         />
         <DatePicker
           style={{ width: 200 }}
@@ -107,7 +108,7 @@ export default function PassOptionsScreen(props) {
             name="car"
             size={30}
             color={"#0056FF"}
-            style={{ width: 36, textAlign: "center" }}
+            style={{ width: 50, textAlign: "center" }}
           />
           <TextInput value={licensePlate} onChangeText={t => setLicense(t)} />
         </View>

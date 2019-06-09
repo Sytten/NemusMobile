@@ -36,8 +36,9 @@ export default function DetailScreen(props) {
         setPasses(responseJson);
       });
   }, []);
-  toOptions = pass => {
-    props.navigation.navigate("PassOptionsScreen", { pass });
+  toOptions = (pass, data) => {
+    console.log(pass);
+    props.navigation.navigate("PassOptionsScreen", { pass, data });
   };
   return (
     <ScrollView style={{ flex: 1 }}>
@@ -117,19 +118,10 @@ export default function DetailScreen(props) {
           </Text>
           <CurrentFireDanger />
           <View
-            style={{ backgroundColor: "#0056FF", padding: 5, marginBottom: 10 }}
+            style={{ marginTop: 15, padding: 5, marginBottom: 10 }}
           >
-            <Button
-              color="white"
-              style={{ textAlign: "center", color: "white", fontSize: 26 }}
-              onPress={() => {
-                console.log("foo");
-                props.navigation.navigate("PassOptionsScreen");
-              }}
-              title="Buy Tickets"
-            />
+            <Text style={{ textAlign: "center", color: "tomato", fontWeight: 'bold', fontSize: 26 }}>Tickets</Text>
           </View>
-          <Text>Tickets</Text>
           <View
             style={{
               flexDirection: "row",
@@ -139,8 +131,8 @@ export default function DetailScreen(props) {
           >
             {passes.map((p, i) => (
               <View key={i}>
-                <TouchableOpacity onPress={() => toOptions(p)}>
-                  <Text>{p.type}</Text>
+                <TouchableOpacity onPress={() => toOptions(p, data)}>
+                  <Text style={{ textAlign: "center", fontSize: 16, fontWeight: 'bold' }}>{p.type}</Text>
                   <Text>max days: {p.maxDays}</Text>
                   <Text>max people: {p.maxPeople}</Text>
                   <Text>fee: {p.fee}</Text>
