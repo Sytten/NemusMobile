@@ -6,7 +6,7 @@ import CurrentFireDanger from "./CurrentFireDanger";
 import { Rating, AirbnbRating } from "react-native-elements";
 export default props => {
   toDetail = () => {
-    props.navigation.navigate("DetailScreen", { park: props });
+    props.navigation.navigate("DetailScreen", props);
   };
   return (
     <TouchableOpacity style={{ flex: 1, padding: 20 }} onPress={toDetail}>

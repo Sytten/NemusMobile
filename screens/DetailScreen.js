@@ -116,7 +116,7 @@ export default function DetailScreen(props) {
           <Text style={{ marginBottom: 10, padding: 5, marginTop: 10 }}>
             {data.description}
           </Text>
-          <CurrentFireDanger />
+          <CurrentFireDanger color={data.dangerLevel}/>
           <View
             style={{ marginTop: 15, padding: 5, marginBottom: 10 }}
           >
@@ -135,7 +135,7 @@ export default function DetailScreen(props) {
                   <Text style={{ textAlign: "center", fontSize: 16, fontWeight: 'bold' }}>{p.type}</Text>
                   <Text>max days: {p.maxDays}</Text>
                   <Text>max people: {p.maxPeople}</Text>
-                  <Text>fee: {p.fee}</Text>
+                  <Text>fee: ${p.fee}</Text>
                 </TouchableOpacity>
               </View>
             ))}
