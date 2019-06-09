@@ -2,7 +2,19 @@ import React from "react";
 import { Text, View } from "react-native";
 import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 export default props => {
-  const color = props.color === "GREEN" ? "green" : "red";
+  let color = "green";
+  switch (props.color) {
+    case "LOW":
+      color = "green";
+      break;
+    case "MEDIUM":
+      color = "orange";
+      break;
+    case "HIGH":
+      color = "red";
+      break;
+    default:
+  }
   return (
     <View
       style={{
