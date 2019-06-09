@@ -38,18 +38,18 @@ export default function TripScreen(props) {
             "maxPeople": 4,
             "fee": 20,
             "park": {
-                "id": 1,
-                "name": "Pinnacles State Park",
-                "latitude": 36.486944,
-                "longitude": -121.166944,
-                "imageTag": "192fa5f6-d7be-45fa-83df-03d775dec680",
-                "dangerLevel": "LOW",
-                "rating": 4,
-                "address": "2400 Pinnacles Hwy, Paicines, CA 95043",
-                "website": "visitpinnacles.com",
-                "number": "(831) 389-4538",
-                "description": "The remains of an ancient volcanic field, this park features geologic sights, caves & condors."
-            }
+              "id": 1,
+              "name": "Pinnacles State Park",
+              "latitude": 36.486944,
+              "longitude": -121.166944,
+              "imageTag": "192fa5f6-d7be-45fa-83df-03d775dec680",
+              "dangerLevel": "LOW",
+              "rating": 4,
+              "address": "2400 Pinnacles Hwy, Paicines, CA 95043",
+              "website": "visitpinnacles.com",
+              "number": "(831) 389-4538",
+              "description": "The remains of an ancient volcanic field, this park features geologic sights, caves & condors."
+          }
         }
       };
   return (
