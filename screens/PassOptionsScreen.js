@@ -11,12 +11,34 @@ import {
   Ionicons,
   AntDesign
 } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
 
-export default function PassOptionsScreen() {
-  confirm = () => {};
+export default function PassOptionsScreen(props) {
+  confirm = () => {
+    fetch(`http://api.nemus.world/users/1/trips`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        passId: id,
+        endDate,
+        startDate,
+        numberPeople: noPeople,
+        licensePlate
+      })
+    })
+      .then(console.log)
+      .then(toMain);
+  };
+  toMain = () => {
+    props.navigation.navigate("MainMap");
+  };
+  const pass = props.navigation.getParam("pass");
+  const { id } = pass;
   const [noPeople, setNoPeople] = useState(1);
-  const [noCars, setNoCars] = useState(1);
+  const [licensePlate, setLicense] = useState("CP000011");
   const [startDate, setStartDate] = useState("2019-5-10");
   const [endDate, setEndDate] = useState("2019-5-11");
   return (
@@ -79,19 +101,17 @@ export default function PassOptionsScreen() {
           cancelBtnText="Cancel"
         />
       </View>
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-        <AntDesign
-          name="car"
-          size={30}
-          color={"#0056FF"}
-          style={{ width: 36, textAlign: "center" }}
-        />
-        <NumericInput
-          type="up-down"
-          value={noCars}
-          onChange={value => setNoCars(value)}
-        />
-      </View>
+      {pass.type === "CAR" && (
+        <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+          <AntDesign
+            name="car"
+            size={30}
+            color={"#0056FF"}
+            style={{ width: 36, textAlign: "center" }}
+          />
+          <TextInput value={licensePlate} onChangeText={t => setLicense(t)} />
+        </View>
+      )}
       <View style={{ flex: 1, alignSelf: "center" }}>
         <TouchableOpacity
           style={{

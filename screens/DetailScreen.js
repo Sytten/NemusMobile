@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -21,8 +21,21 @@ import {
 } from "@expo/vector-icons";
 
 export default function DetailScreen(props) {
+  const park = props.navigation.getParam("park");
+  const [passes, setPasses] = useState([]);
+  const parkId = park.id || 1;
+  useEffect(() => {
+    fetch(`http://api.nemus.world/parks/${parkId}/passes`)
+      .then(response => response.json())
+      .then(responseJson => {
+        setPasses(responseJson);
+      });
+  }, []);
+  toOptions = pass => {
+    props.navigation.navigate("PassOptionsScreen", { pass });
+  };
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={{ flex: 1 }}>
       <View style={{ flex: 1, flexDirection: "column" }}>
         <Image
           style={{ width: width, height: 160 }}
@@ -115,20 +128,27 @@ export default function DetailScreen(props) {
               title="Buy Tickets"
             />
           </View>
+          <Text>Tickets</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              flex: 1,
+              justifyContent: "space-evenly"
+            }}
+          >
+            {passes.map((p, i) => (
+              <View key={i}>
+                <TouchableOpacity onPress={() => toOptions(p)}>
+                  <Text>{p.type}</Text>
+                  <Text>max days: {p.maxDays}</Text>
+                  <Text>max people: {p.maxPeople}</Text>
+                  <Text>fee: {p.fee}</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
         </View>
       </View>
     </ScrollView>
   );
 }
-
-DetailScreen.navigationOptions = {
-  title: "Details"
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: "#fff"
-  }
-});
