@@ -83,7 +83,7 @@ export default class ParkScreen extends React.Component {
             marginBottom: 5
           }}
         >
-          {data.pass.park.name}
+           #{data.id} {data.pass.park.name}
         </Text>
 
         <View style={{ flex: 1, flexDirection: "column", marginBottom: 5 }}>
@@ -100,14 +100,14 @@ export default class ParkScreen extends React.Component {
           </View>
 
           {/*<View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
-            <Entypo
-              name="address"
+            <FontAwesome
+              name="ticket"
               size={24}
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
             <Text style={{ fontSize: 16 }}>
-              66VF+48 Loma Vista, Big Sur, CA
+              #{data.id}
             </Text>
           </View>*/}
 

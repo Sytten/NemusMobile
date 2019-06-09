@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Image, View, Dimensions, Picker } from "react-native";
+import { Text, Image, View, Dimensions, Picker, ScrollView } from "react-native";
 import NumericInput from "react-native-numeric-input";
 import DatePicker from "react-native-datepicker";
 
@@ -12,6 +12,7 @@ import {
   AntDesign
 } from "@expo/vector-icons";
 import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
+const { width, height } = Dimensions.get("window");
 
 export default function PassOptionsScreen(props) {
   confirm = () => {
@@ -43,27 +44,36 @@ export default function PassOptionsScreen(props) {
   const [startDate, setStartDate] = useState("2019-5-10");
   const [endDate, setEndDate] = useState("2019-5-11");
   return (
-    <View style={{ flex: 1, alignSelf: "center", padding: 20 }}>
-      <Text style={{ fontSize: 32, fontWeight: "bold", flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
+      <Text style={{ fontSize: 32, fontWeight: "bold", flex: 1, padding: 10 }}>
         {data.name}
       </Text>
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+      <Image
+          style={{ width: width, height: 160 }}
+          source={{
+            uri:
+              `https://storage.googleapis.com/nemus-parks-images/${data.imageTag}`
+          }}
+        />
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop: 15 }}>
         <FontAwesome
           name="group"
-          size={30}
+          size={24}
           color={"#0056FF"}
           style={{ width: 50, textAlign: "center" }}
         />
         <NumericInput
           type="up-down"
           value={noPeople}
+          style={{height: 32}}
           onChange={value => setNoPeople(value)}
         />
       </View>
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop: 15 }}>
         <Entypo
           name="calendar"
-          size={30}
+          size={24}
           color={"#0056FF"}
           style={{ width: 50, textAlign: "center" }}
         />
@@ -81,10 +91,11 @@ export default function PassOptionsScreen(props) {
           cancelBtnText="Cancel"
         />
       </View>
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop: 15 }}>
         <Entypo
           name="calendar"
-          size={30}
+          size={24}
           color={"#0056FF"}
           style={{ width: 50, textAlign: "center" }}
         />
@@ -103,7 +114,7 @@ export default function PassOptionsScreen(props) {
         />
       </View>
       {pass.type === "CAR" && (
-        <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+        <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop: 15 }}>
           <AntDesign
             name="car"
             size={30}
@@ -113,20 +124,20 @@ export default function PassOptionsScreen(props) {
           <TextInput value={licensePlate} onChangeText={t => setLicense(t)} />
         </View>
       )}
-      <View style={{ flex: 1, alignSelf: "center" }}>
+      <View style={{ flex: 1, alignSelf: "center", marginTop: 15}}>
         <TouchableOpacity
           style={{
-            backgroundColor: "#47525E",
-            width: 151,
-            height: 62,
+            backgroundColor: "tomato",
+            width: width,
+            height: 60,
             alignItems: "center",
             justifyContent: "center"
           }}
           onPress={confirm}
         >
-          <Text style={{ fontSize: 30, color: "white" }}>Confirm</Text>
+          <Text style={{ fontSize: 26, color: "white"}}>Confirm</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
