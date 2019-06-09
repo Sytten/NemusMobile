@@ -7,6 +7,7 @@ import ParkScreen from "../screens/ParkScreen";
 import PaymentScreen from "../screens/PaymentScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import DonateScreen from "../screens/DonateScreen";
+import RangerScreen from "../screens/RangerScreen";
 
 import SearchScreen from "../screens/SearchScreen";
 import DetailScreen from "../screens/DetailScreen";
@@ -22,7 +23,8 @@ const MyDrawerNavigator = createDrawerNavigator(
     ParkScreen,
     PaymentScreen,
     DonateScreen,
-    SettingsScreen
+    RangerScreen,
+    SettingsScreen,
   },
   {
     contentComponent,
