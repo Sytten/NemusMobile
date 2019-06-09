@@ -47,7 +47,7 @@ export default function DetailScreen(props) {
             </View>
           
             <Text style={{marginBottom: 10, padding: 5, marginTop: 10}}>1,000-acre state park boasts a wide variety of hiking trails, wildlife, campgrounds & a guest lodge.</Text>
-
+            
             <View style={{backgroundColor: '#0056FF', padding: 5, marginBottom: 10}} >
             <Button color='white' style={{textAlign:'center', color:'white', fontSize: 26}}
               onPress={() => { console.log('foo'); props.navigation.navigate('PassOptionsScreen');}}
