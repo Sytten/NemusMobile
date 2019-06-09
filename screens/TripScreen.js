@@ -14,6 +14,7 @@ const { width, height } = Dimensions.get("window");
 import CurrentFireDanger from "../components/CurrentFireDanger";
 import {
   Feather,
+  MaterialIcons,
   MaterialCommunityIcons,
   Entypo,
   Foundation,
@@ -21,32 +22,39 @@ import {
   Ionicons
 } from "@expo/vector-icons";
 
+import moment from "moment";
+
 export default function TripScreen(props) {
   let data = {
-        "id": 3,
-        "name": "Yosemite Valley",
-        "latitude": 37.721667,
-        "longitude": -119.646389,
-        "imageTag": "1e757e5e-8cbd-46f0-bbca-ab60f21d2386",
-        "dangerLevel": "LOW",
-        "rating": 5,
-        "address": "9035 Village Dr, Yosemite Valley, CA 95389",
-        "website": "nps.gov",
-        "number": "(209) 372-0200",
-        "description": "Iconic national park offers an array of options such as hiking among redwoods & river rafting."
-    }
+        "id": 1,
+        "startDate": "2019-05-04T17:00:00.000Z",
+        "endDate": "2019-08-06T17:00:00.000Z",
+        "numberPeople": 2,
+        "licensePlate": null,
+        "pass": {
+            "id": 1,
+            "type": "CAMPING",
+            "maxDays": 10,
+            "maxPeople": 4,
+            "fee": 20,
+            "park": {
+                "id": 1,
+                "name": "Pinnacles State Park",
+                "latitude": 36.486944,
+                "longitude": -121.166944,
+                "imageTag": "192fa5f6-d7be-45fa-83df-03d775dec680",
+                "dangerLevel": "LOW",
+                "rating": 4,
+                "address": "2400 Pinnacles Hwy, Paicines, CA 95043",
+                "website": "visitpinnacles.com",
+                "number": "(831) 389-4538",
+                "description": "The remains of an ancient volcanic field, this park features geologic sights, caves & condors."
+            }
+        }
+      };
   return (
     <ScrollView style={{ flex: 1 }}>
-      <View style={{ flex: 1, flexDirection: "column" }}>
-        <Image
-          style={{ width: width, height: 160 }}
-          source={{
-            uri:
-              `https://storage.googleapis.com/nemus-parks-images/${data.imageTag}`
-          }}
-        />
-
-        <Text
+      <Text
           style={{
             fontSize: 32,
             padding: 5,
@@ -54,7 +62,26 @@ export default function TripScreen(props) {
             marginBottom: 5
           }}
         >
-          {data.name}
+          Current trip
+        </Text>
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        <Image
+          style={{ width: width, height: 160 }}
+          source={{
+            uri:
+              `https://storage.googleapis.com/nemus-parks-images/${data.pass.park.imageTag}`
+          }}
+        />
+
+        <Text
+          style={{
+            fontSize: 24,
+            padding: 5,
+            fontWeight: "bold",
+            marginBottom: 5
+          }}
+        >
+          {data.pass.park.name}
         </Text>
 
         <View style={{ flex: 1, flexDirection: "column", marginBottom: 5 }}>
@@ -66,7 +93,7 @@ export default function TripScreen(props) {
               style={{ width: 36, textAlign: "center" }}
             />
             <Text style={{ fontSize: 16 }}>
-              {data.address}
+              {data.pass.park.address}
             </Text>
           </View>
 
@@ -83,15 +110,23 @@ export default function TripScreen(props) {
           </View>*/}
 
           <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
-            <MaterialCommunityIcons
-              name="web"
+            <Entypo
+              name="calendar"
               size={24}
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 16 }}>{data.website}</Text>
+            <Text style={{ fontSize: 16 }}>{moment(data.startDate).format('LL')} – {moment(data.endDate).format('LL')}</Text>
           </View>
-
+          <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
+            <MaterialIcons
+              name="people"
+              size={24}
+              color={"#0056FF"}
+              style={{ width: 36, textAlign: "center" }}
+            />
+            <Text style={{ fontSize: 16 }}>{data.numberPeople}</Text>
+          </View>
           <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
             <Feather
               name="phone"
@@ -99,12 +134,18 @@ export default function TripScreen(props) {
               color={"#0056FF"}
               style={{ width: 36, textAlign: "center" }}
             />
-            <Text style={{ fontSize: 16 }}>{data.number}</Text>
+            <Text style={{ fontSize: 16 }}>{data.pass.park.number}</Text>
           </View>
-
-          <Text style={{ marginBottom: 10, padding: 5, marginTop: 10 }}>
-            {data.description}
-          </Text>
+          <View style={{ flex: 1, flexDirection: "row", marginBottom: 5 }}>
+            <FontAwesome
+              name="money"
+              size={24}
+              color={"#0056FF"}
+              style={{ width: 36, textAlign: "center" }}
+            />
+            <Text style={{ fontSize: 16 }}>${data.pass.fee}</Text>
+          </View>
+          
           <CurrentFireDanger />
         </View>
       </View>
