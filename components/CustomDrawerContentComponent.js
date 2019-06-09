@@ -15,7 +15,7 @@ export default props => {
         }}
       >
         <Image source={require("../assets/images/profile.png")} />
-        <Text>Amenda</Text>
+        <Text style={{fontSize: 20, color:"white", marginRight: 80}}>John Doe</Text>
       </View>
       <DrawerItems {...props} />
     </ScrollView>

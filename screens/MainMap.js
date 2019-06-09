@@ -71,6 +71,12 @@ export default class HomeScreen extends React.Component {
           showsMyLocationButton={true}
           followsUserLocation={true}
           showsCompass={true}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 1.0000,
+            longitudeDelta: 1.0000,
+          }}
         >
           {this.state.coordinates.map(function(item, i) {
             return (
@@ -111,7 +117,7 @@ export default class HomeScreen extends React.Component {
               <FontAwesome name="navicon" size={28} color="grey" />
             </TouchableOpacity>
             <Text style={{ fontSize: 30, color: "grey" }}>
-              Welcome to Yosemite!
+              Welcome to Nemus!
             </Text>
           </View>
         </View>
